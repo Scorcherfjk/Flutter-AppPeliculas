@@ -67,4 +67,12 @@ class Pelicula {
     releaseDate      = json['release_date'];
   }
 
+  String getPosterImg(){
+    if (posterPath == null) {
+      return 'https://www.acws.cl/productos/img/p/es-default-large_default.jpg';
+    }else{
+      return 'https://image.tmdb.org/t/p/w500$posterPath';
+    }
+  }
+
 }
