@@ -75,4 +75,12 @@ class Pelicula {
     }
   }
 
+  String getBackdropImg(){
+    if (posterPath == null) {
+      return 'https://www.acws.cl/productos/img/p/es-default-large_default.jpg';
+    }else{
+      return 'https://image.tmdb.org/t/p/w500$backdropPath';
+    }
+  }
+
 }
