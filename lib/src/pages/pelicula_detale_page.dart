@@ -1,4 +1,6 @@
 import 'package:curso_peliculas/src/models/pelicula_model.dart';
+import 'package:curso_peliculas/src/providers/peliculas_provider.dart';
+import 'package:curso_peliculas/src/widgets/actor_horizontal.dart';
 import 'package:flutter/material.dart';
 
 class PeliculaDetallePage extends StatelessWidget {
@@ -17,11 +19,7 @@ class PeliculaDetallePage extends StatelessWidget {
             ),
             _crearPosterTitulo(context, pelicula),
             _crearDescripcion(pelicula),
-            _crearDescripcion(pelicula),
-            _crearDescripcion(pelicula),
-            _crearDescripcion(pelicula),
-            _crearDescripcion(pelicula),
-            _crearDescripcion(pelicula),
+            _crearActores(pelicula.id),
           ]))
         ],
       ),
@@ -92,6 +90,27 @@ class PeliculaDetallePage extends StatelessWidget {
       child: Text(
         pelicula.overview,
         textAlign: TextAlign.justify,),
+    );
+  }
+
+  Widget _crearActores(int idPelicula) {
+    
+    final provider = new PeliculasProvider();
+
+    return FutureBuilder(
+      future: provider.getActores(idPelicula),
+      builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+        if (snapshot.hasData) {
+          return ActorHorizontal( actores: snapshot.data);
+        } else {
+          return Container(
+              height: 200.0,
+              child: Center(
+                child: CircularProgressIndicator()
+              )
+            );
+        }
+      },
     );
   }
 }
