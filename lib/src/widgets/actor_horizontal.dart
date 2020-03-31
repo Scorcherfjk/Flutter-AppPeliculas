@@ -15,7 +15,7 @@ class ActorHorizontal extends StatelessWidget {
     final _screenSize = MediaQuery.of(context).size;
 
     return Container(
-        height: _screenSize.width * 0.5,
+        height: _screenSize.width * 0.6,
         padding: EdgeInsets.only(top: 10.0),
         child: PageView.builder(
           controller: _pageController,

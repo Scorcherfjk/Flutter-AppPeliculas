@@ -1,7 +1,8 @@
-import 'package:curso_peliculas/src/providers/peliculas_provider.dart';
-import 'package:curso_peliculas/src/widgets/movie_horizontal.dart';
 import 'package:flutter/material.dart';
 
+import 'package:curso_peliculas/src/providers/peliculas_provider.dart';
+import 'package:curso_peliculas/src/search/search_delegate.dart';
+import 'package:curso_peliculas/src/widgets/movie_horizontal.dart';
 import 'package:curso_peliculas/src/widgets/card_swiper_widget.dart';
 
 class HomePage extends StatelessWidget {
@@ -21,7 +22,11 @@ class HomePage extends StatelessWidget {
           title: Text('Peliculas'),
           backgroundColor: Colors.indigoAccent,
           actions: <Widget>[
-            IconButton(icon: Icon(Icons.search), onPressed: () {}),
+            IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () {
+                showSearch(context: context, delegate: DataSearch());
+              }),
           ],
         ),
         body: Container(
@@ -70,7 +75,7 @@ class HomePage extends StatelessWidget {
                 return MovieHorizontal(peliculas: snapshot.data, siguientePagina: peliculasProvider.getPopular,);
               } else {
                 return Container(
-                    height: 200.0,
+                    height: 140.0,
                     child: Center(child: CircularProgressIndicator()));
               }
             },
