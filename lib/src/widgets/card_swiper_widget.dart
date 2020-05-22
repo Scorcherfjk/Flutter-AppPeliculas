@@ -16,9 +16,7 @@ class CardSwiper extends StatelessWidget {
       padding: EdgeInsets.only(top: 10.0),
       child: Swiper(
         itemBuilder: (BuildContext context, int index) {
-          
           elementos[index].uniqueId = '${elementos[index].id}-swiper';
-          
           return Hero(
             tag: elementos[index].uniqueId,
             child: ClipRRect(
